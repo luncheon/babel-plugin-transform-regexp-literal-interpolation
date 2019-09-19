@@ -38,7 +38,7 @@ npm install --save-dev @babel/core luncheon/babel-plugin-transform-regexp-litera
 
 ```json
 {
-  "plugins": ["luncheon/babel-plugin-transform-regexp-literal-interpolation"]
+  "plugins": ["babel-plugin-transform-regexp-literal-interpolation"]
 }
 ```
 
