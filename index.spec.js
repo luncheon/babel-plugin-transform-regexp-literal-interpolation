@@ -25,6 +25,21 @@ const tests = [
     `,
   },
   {
+    title: 'flags',
+    code: `
+      const a = /a/m
+      const ab = /[$$a]b/
+      const ab_i = /[$$a]b/i
+      const ab_gm = /[$$a]b/gm
+    `,
+    output: `
+      const a = /a/m;
+      const ab = /ab/;
+      const ab_i = /ab/i;
+      const ab_gm = /ab/gm;
+    `,
+  },
+  {
     title: 'error: not found',
     error: true,
     code: `
