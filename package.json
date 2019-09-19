@@ -1,0 +1,20 @@
+{
+  "name": "babel-plugin-transform-regexp-literal-interpolation",
+  "version": "0.0.0",
+  "description": "A babel plugin to interpolate regular expression literals like string template literals.",
+  "license": "WTFPL",
+  "main": "index.js",
+  "keywords": [
+    "babel",
+    "babel-plugin",
+    "regex",
+    "regexp"
+  ],
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "jest": "^24.9.0"
+  }
+}
