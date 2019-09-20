@@ -1,5 +1,3 @@
-# babel-plugin-transform-regexp-literal-interpolation
-
 > ⚠️ You don't need this plugin. Consider template literals with `String.raw` tag.
 >
 > ```javascript
@@ -9,6 +7,8 @@
 > ```
 >
 > * [String.raw() - JavaScript | MDN](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/raw)
+
+# babel-plugin-transform-regexp-literal-interpolation
 
 input:
 
