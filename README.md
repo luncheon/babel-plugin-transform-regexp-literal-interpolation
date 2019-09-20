@@ -1,5 +1,15 @@
 # babel-plugin-transform-regexp-literal-interpolation
 
+> ⚠️ You don't need this plugin. Consider template literals with `String.raw` tag.
+>
+> ```javascript
+> const sign = /[+-]/
+> const uint = RegExp(String.raw`\d+`)
+> const int = RegExp(String.raw`${sign.source}?${uint.source}`)
+> ```
+>
+> * [String.raw() - JavaScript | MDN](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/String/raw)
+
 input:
 
 ```javascript
@@ -10,7 +20,7 @@ const
   exponent = /[eE][$$int]/,
   fractional = /[$$uint]\.|\d*\.\d+/,
   number = /[$$sign]?(?:[$$fractional])(?:[$$exponent])?/;
-console.log(+'-1.23e+4'.match(/^[$$number]$/)[0]); // -12300
+console.log(+'A-1.23e+4'.match(/^A([$$number])$/)[1]); // -12300
 ```
 
 output:
@@ -23,7 +33,7 @@ const
   exponent = /[eE][+-]?\d+/,
   fractional = /\d+\.|\d*\.\d+/,
   number = /[+-]?(?:\d+\.|\d*\.\d+)(?:[eE][+-]?\d+)?/;
-console.log(+'-1.23e+4'.match(/^[+-]?(?:\d+\.|\d*\.\d+)(?:[eE][+-]?\d+)?$/)[0]); // -12300
+console.log(+'A-1.23e+4'.match(/^A([+-]?(?:\d+\.|\d*\.\d+)(?:[eE][+-]?\d+))?$/)[1]); // -12300
 ```
 
 ## Install
