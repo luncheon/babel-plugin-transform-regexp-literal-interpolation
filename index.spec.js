@@ -1,3 +1,4 @@
+const assert = require('assert')
 const babel = require('@babel/core')
 const plugins = [require('.')]
 const tests = [
@@ -94,18 +95,13 @@ const tests = [
   },
 ]
 
-describe(require('./package.json').name, () => {
-  tests.forEach(({ code, output, error, title }, i) => {
-    if (error) {
-      it(title || String(i + 1), () => {
-        expect(() => babel.transformSync(code, { plugins, retainLines: true })).toThrow()
-      })
-    } else {
-      it(title || String(i + 1), () => {
-        const actual = babel.transformSync(code, { plugins, retainLines: true }).code.trim()
-        const expected = output.trim().replace(/^ */gm, '')
-        expect(actual).toBe(expected)
-      })
-    }
-  })
+tests.forEach(({ code, output, error, title }, i) => {
+  if (error) {
+    assert.throws(() => babel.transformSync(code, { plugins, retainLines: true }))
+  } else {
+    const actual = babel.transformSync(code, { plugins, retainLines: true }).code.trim()
+    const expected = output.trim().replace(/^ */gm, '')
+    assert.strictEqual(actual, expected)
+  }
+  console.log('  ✅', title)
 })
